@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <content>
+        <aside data-active="{{ active }}">
+            <div class="label">Products</div>
+            <div class="link search-products"><a href="/search_products">Search products</a></div>
+            <div class="link"><a href="#">Add product</a></div>
+            <div class="link"><a href="#">Remove product</a></div>
+            <div class="link"><a href="#">Reassessment act</a></div>
+
+            <div class="label">Storages</div>
+            <div class="link search-storages"><a href="/search_storages">Search storages</a></div>
+            <div class="link"><a href="#">Add storage</a></div>
+            <div class="link"><a href="#">Remove storage</a></div>
+        </aside>
+        <main>
+            <header>
+                {% for item in form %}
+                    {% if item['type'] == 'select' %}
+                        <div class="select-wrapper">
+                            <label for="{{ item['name'] }}">{{ item['title'] }}</label>
+                            <select name="{{ item['name'] }}">
+                            </select>
+                        </div>
+                    {% else %}
+                        <div class="select-wrapper">
+                            <label for="{{ item['name'] }}">{{ item['title'] }}</label>
+                            <input type="text" name="{{ item['name'] }}">
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <div class="search-btn">Search</div>
+            </header>
+            <section>
+                <table>
+                    <tr class="item">
+                        <td class="item__field">ID</td>
+                        <td class="item__field">Name</td>
+                        <td class="item__field">Firm</td>
+                        <td class="item__field">Price</td>
+                    </tr>
+                    <tr class="item">
+                        <td class="item__field">1</td>
+                        <td class="item__field">name of productname of productname of productname of product</td>
+                        <td class="item__field">firm of product</td>
+                        <td class="item__field">70 000 p.</td>
+                    </tr>
+                    <tr class="item">
+                        <td class="item__field">1</td>
+                        <td class="item__field">name of product</td>
+                        <td class="item__field">firm of product</td>
+                        <td class="item__field">70 000 p.</td>
+                    </tr>
+                    <tr class="item">
+                        <td class="item__field">1</td>
+                        <td class="item__field">name of product</td>
+                        <td class="item__field">firm of product</td>
+                        <td class="item__field">70 000 p.</td>
+                    </tr>
+                </table>
+            </section>
+        </main>
+    </content>
+
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+</html>
